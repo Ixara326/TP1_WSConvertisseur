@@ -50,5 +50,20 @@ namespace WSConvertisseur.Models
             NomDevise = nomDevise;
             Taux = taux;
         }
+
+        /// <summary>Compare deux devises (utile pour les tests unitaires)</summary>
+        public override bool Equals(object? obj)
+        {
+            return obj is Devise devise &&
+                   Id == devise.Id &&
+                   NomDevise == devise.NomDevise &&
+                   Taux == devise.Taux;
+        }
+
+        /// <summary>Hash code cohérent avec Equals</summary>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, NomDevise, Taux);
+        }
     }
 }
