@@ -40,8 +40,14 @@ namespace WSConvertisseur.Controllers
 
         // POST api/<DevisesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Devise> Post([FromBody] Devise devise)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            devises.Add(devise);
+            return CreatedAtRoute("GetDevise", new { id = devise.Id }, devise);
         }
 
         // PUT api/<DevisesController>/5
