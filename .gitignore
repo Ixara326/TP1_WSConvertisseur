@@ -1,0 +1,12 @@
+## .gitignore (modèle Visual Studio simplifié)
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+TestResults/
+*.log
