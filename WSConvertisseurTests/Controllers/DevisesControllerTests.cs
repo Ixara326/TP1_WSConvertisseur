@@ -8,12 +8,27 @@ namespace WSConvertisseur.Controllers.Tests
     [TestClass()]
     public class DevisesControllerTests
     {
+        private DevisesController controller = null!;
+
+        [TestInitialize]
+        public void InitialisationDesTests()
+        {
+            // Rajouter les initialisations exécutées avant chaque test
+            controller = new DevisesController();
+        }
+
+        [TestCleanup]
+        public void NettoyageDesTests()
+        {
+            // Nettoyer les variables, ... après chaque test
+            controller = null!;
+        }
+
         #region GetAll
         [TestMethod()]
         public void GetAll_ReturnsAllItems()
         {
             // Arrange
-            DevisesController controller = new DevisesController();
             List<Devise> devisesAttendues = new List<Devise>
             {
                 new Devise(1, "Dollar", 1.08),
@@ -34,9 +49,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod()]
         public void GetById_ExistingIdPassed_ReturnsRightItem()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
-
             // Act
             var result = controller.GetById(1);
 
@@ -50,9 +62,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod()]
         public void GetById_UnknownIdPassed_ReturnsNotFoundResult()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
-
             // Act
             var result = controller.GetById(20);
 
@@ -69,7 +78,6 @@ namespace WSConvertisseur.Controllers.Tests
         public void Post_ValidObjectPassed_ReturnsCreatedAtRouteResult()
         {
             // Arrange
-            DevisesController controller = new DevisesController();
             Devise devise = new Devise(4, "Rouble", 89.5);
 
             // Act
@@ -89,7 +97,6 @@ namespace WSConvertisseur.Controllers.Tests
         //public void Post_InvalidObjectPassed_ReturnsBadRequest()
         //{
         //    // Arrange
-        //    DevisesController controller = new DevisesController();
         //    Devise devise = new Devise(4, null, 4.0);
         //
         //    // Act
@@ -106,7 +113,6 @@ namespace WSConvertisseur.Controllers.Tests
         public void Put_InvalidIdPassed_ReturnsBadRequest()
         {
             // Arrange
-            DevisesController controller = new DevisesController();
             Devise devise = new Devise(2, "Franc Suisse", 1.10);
 
             // Act
@@ -121,7 +127,6 @@ namespace WSConvertisseur.Controllers.Tests
         public void Put_UnknownIdPassed_ReturnsNotFound()
         {
             // Arrange
-            DevisesController controller = new DevisesController();
             Devise devise = new Devise(20, "Livre Sterling", 0.87);
 
             // Act
@@ -136,7 +141,6 @@ namespace WSConvertisseur.Controllers.Tests
         public void Put_ValidObjectPassed_ReturnsNoContent()
         {
             // Arrange
-            DevisesController controller = new DevisesController();
             Devise devise = new Devise(1, "Dollar", 1.15);
 
             // Act
@@ -153,9 +157,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod()]
         public void Delete_ExistingIdPassed_ReturnsDeletedItem()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
-
             // Act
             var result = controller.Delete(1);
 
@@ -169,9 +170,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod()]
         public void Delete_UnknownIdPassed_ReturnsNotFound()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
-
             // Act
             var result = controller.Delete(20);
 
