@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WSConvertisseur.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace WSConvertisseur.Controllers
 {
     /// <summary>
@@ -30,7 +28,6 @@ namespace WSConvertisseur.Controllers
         /// </summary>
         /// <returns>Http response</returns>
         /// <response code="200">The list of all currencies</response>
-        // GET: api/<DevisesController>
         [HttpGet]
         [ProducesResponseType(200)]
         public IEnumerable<Devise> GetAll()
@@ -45,7 +42,6 @@ namespace WSConvertisseur.Controllers
         /// <param name="id">The id of the currency</param>
         /// <response code="200">When the currency id is found</response>
         /// <response code="404">When the currency id is not found</response>
-        // GET api/<DevisesController>/5
         [HttpGet("{id}", Name = "GetDevise")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
@@ -77,7 +73,6 @@ namespace WSConvertisseur.Controllers
         /// <param name="devise">The currency to create (Json in the body)</param>
         /// <response code="201">When the currency is created</response>
         /// <response code="400">When the currency model is not valid</response>
-        // POST api/<DevisesController>
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -100,7 +95,6 @@ namespace WSConvertisseur.Controllers
         /// <response code="204">When the currency is updated</response>
         /// <response code="400">When the model is not valid or the ids are different</response>
         /// <response code="404">When the currency id is not found</response>
-        // PUT api/<DevisesController>/5
         [HttpPut("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -131,7 +125,6 @@ namespace WSConvertisseur.Controllers
         /// <param name="id">The id of the currency to delete</param>
         /// <response code="200">When the currency is deleted (the deleted currency is returned)</response>
         /// <response code="404">When the currency id is not found</response>
-        // DELETE api/<DevisesController>/5
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
